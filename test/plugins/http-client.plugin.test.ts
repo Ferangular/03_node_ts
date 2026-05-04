@@ -1,4 +1,5 @@
 import { httpClientPlugin } from '../../src/plugins/http-client.plugin';
+import { buildLogger } from '../../src/plugins/logger-modificado.plugin';
 
 describe('plugins/http-client.plugin.ts', () => {
 
@@ -6,7 +7,8 @@ describe('plugins/http-client.plugin.ts', () => {
 
     const data = await httpClientPlugin.get('https://jsonplaceholder.typicode.com/todos/1');
 
-    console.log(data);
+    const logger = buildLogger('http-client-test');
+    logger.info(`API Response: ${JSON.stringify(data)}`);
     expect(data).toEqual({
       userId: 1,
       id: 1,

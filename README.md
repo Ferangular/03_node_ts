@@ -34,7 +34,7 @@ npm install
 ├── src/                    # Código fuente TypeScript
 │   ├── js-foundation/      # Ejercicios fundamentales de JS/TS
 │   ├── plugins/            # Plugins y utilidades
-│   └── app.ts             # Punto de entrada
+│   └── app.js             # Punto de entrada
 ├── test/                   # Archivos de prueba
 │   ├── js-foundation/
 │   └── plugins/

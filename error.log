@@ -5,3 +5,5 @@
 {"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T08:55:57.795Z"}
 {"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T09:00:08.289Z"}
 {"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T09:09:53.657Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T09:17:33.755Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T09:19:02.288Z"}

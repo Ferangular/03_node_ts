@@ -1,6 +1,6 @@
 {
-  "watch": ["src"],
-  "ext": ".ts",
-  "ignore": ["dist"],
-  "exec": "npx ts-node --esm ./src/app.ts"
+  "watch": ["dist"],
+  "ext": "js,json",
+  "ignore": ["node_modules"],
+  "exec": "node dist/app.js"
 }

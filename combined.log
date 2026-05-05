@@ -39,3 +39,42 @@
 {"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-04T09:19:02.269Z"}
 {"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T09:19:02.288Z"}
 {"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-04T09:19:02.290Z"}
+{"level":"info","message":"info Iniciando aplicación...","service":"app","timestamp":"2026-05-05T09:08:35.111Z"}
+{"level":"info","message":"info Realizando petición HTTP a JSONPlaceholder...","service":"app","timestamp":"2026-05-05T09:08:35.115Z"}
+{"level":"info","message":"info Respuesta recibida exitosamente","service":"app","timestamp":"2026-05-05T09:08:35.215Z"}
+{"level":"info","message":"info Todo ID: 1, Title: delectus aut autem, Completed: false","service":"app","timestamp":"2026-05-05T09:08:35.217Z"}
+{"level":"info","message":"info Aplicación finalizada correctamente","service":"app","timestamp":"2026-05-05T09:08:35.218Z"}
+{"level":"info","message":"info Iniciando aplicación...","service":"app","timestamp":"2026-05-05T09:08:42.059Z"}
+{"level":"info","message":"info Realizando petición HTTP a JSONPlaceholder...","service":"app","timestamp":"2026-05-05T09:08:42.063Z"}
+{"level":"info","message":"info Respuesta recibida exitosamente","service":"app","timestamp":"2026-05-05T09:08:42.157Z"}
+{"level":"info","message":"info Todo ID: 1, Title: delectus aut autem, Completed: false","service":"app","timestamp":"2026-05-05T09:08:42.158Z"}
+{"level":"info","message":"info Aplicación finalizada correctamente","service":"app","timestamp":"2026-05-05T09:08:42.158Z"}
+{"level":"info","message":"info API Response: {\"userId\":1,\"id\":1,\"title\":\"delectus aut autem\",\"completed\":false}","service":"http-client-test","timestamp":"2026-05-05T09:08:50.966Z"}
+{"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-05T09:08:51.509Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-05T09:08:51.533Z"}
+{"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-05T09:08:51.535Z"}
+{"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-05T09:10:07.859Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-05T09:10:07.885Z"}
+{"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-05T09:10:07.895Z"}
+{"level":"info","message":"info API Response: {\"userId\":1,\"id\":1,\"title\":\"delectus aut autem\",\"completed\":false}","service":"http-client-test","timestamp":"2026-05-05T09:10:08.081Z"}
+{"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-05T09:10:17.796Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-05T09:10:17.825Z"}
+{"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-05T09:10:17.839Z"}
+{"level":"info","message":"info API Response: {\"userId\":1,\"id\":1,\"title\":\"delectus aut autem\",\"completed\":false}","service":"http-client-test","timestamp":"2026-05-05T09:10:17.940Z"}
+{"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-05T09:10:49.490Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-05T09:10:49.521Z"}
+{"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-05T09:10:49.525Z"}
+{"level":"info","message":"info API Response: {\"userId\":1,\"id\":1,\"title\":\"delectus aut autem\",\"completed\":false}","service":"http-client-test","timestamp":"2026-05-05T09:10:49.684Z"}
+{"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-05T09:11:54.113Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-05T09:11:54.145Z"}
+{"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-05T09:11:54.154Z"}
+{"level":"info","message":"info API Response: {\"userId\":1,\"id\":1,\"title\":\"delectus aut autem\",\"completed\":false}","service":"http-client-test","timestamp":"2026-05-05T09:11:54.306Z"}
+{"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-05T09:15:32.473Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-05T09:15:32.500Z"}
+{"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-05T09:15:32.505Z"}
+{"level":"info","message":"info API Response: {\"userId\":1,\"id\":1,\"title\":\"delectus aut autem\",\"completed\":false}","service":"http-client-test","timestamp":"2026-05-05T09:15:32.640Z"}
+{"level":"info","message":"info Iniciando aplicación...","service":"app","timestamp":"2026-05-05T09:15:44.598Z"}
+{"level":"info","message":"info Realizando petición HTTP a JSONPlaceholder...","service":"app","timestamp":"2026-05-05T09:15:44.602Z"}
+{"level":"info","message":"info Respuesta recibida exitosamente","service":"app","timestamp":"2026-05-05T09:15:44.696Z"}
+{"level":"info","message":"info Todo ID: 1, Title: delectus aut autem, Completed: false","service":"app","timestamp":"2026-05-05T09:15:44.697Z"}
+{"level":"info","message":"info Aplicación finalizada correctamente","service":"app","timestamp":"2026-05-05T09:15:44.697Z"}

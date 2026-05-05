@@ -39,3 +39,11 @@
 {"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-04T09:19:02.269Z"}
 {"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T09:19:02.288Z"}
 {"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-04T09:19:02.290Z"}
+{"level":"info","message":"info API Response: {\"userId\":1,\"id\":1,\"title\":\"delectus aut autem\",\"completed\":false}","service":"http-client-test","timestamp":"2026-05-04T09:35:27.748Z"}
+{"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-04T09:35:28.379Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T09:35:28.410Z"}
+{"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-04T09:35:28.412Z"}
+{"level":"info","message":"info API Response: {\"userId\":1,\"id\":1,\"title\":\"delectus aut autem\",\"completed\":false}","service":"http-client-test","timestamp":"2026-05-04T09:35:43.517Z"}
+{"level":"info","message":"info test info message","service":"test service","timestamp":"2026-05-04T09:35:44.011Z"}
+{"level":"error","message":"error test error message","service":"test service","timestamp":"2026-05-04T09:35:44.029Z"}
+{"level":"warn","message":"warn test warning message","service":"test service","timestamp":"2026-05-04T09:35:44.031Z"}

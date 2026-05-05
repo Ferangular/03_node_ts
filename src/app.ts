@@ -1,26 +1,22 @@
-import { buildLogger } from "./plugins/logger-modificado.plugin";
-import { httpClientPlugin } from "./plugins/http-client.plugin";
+import {yarg} from "./config/plugins/args.plugins";
+import {ServerApp} from "./presentation/server-app";
 
-const logger = buildLogger('app');
+// console.log(yarg.b)
+// (async () => {
 
-async function main() {
-  try {
-    logger.info('Iniciando aplicación...');
-    
-    // Ejemplo de uso del cliente HTTP
-    logger.info('Realizando petición HTTP a JSONPlaceholder...');
-    const data = await httpClientPlugin.get('https://jsonplaceholder.typicode.com/todos/1');
-    
-    logger.info('Respuesta recibida exitosamente');
-    logger.info(`Todo ID: ${data.id}, Title: ${data.title}, Completed: ${data.completed}`);
-    
-    logger.info('Aplicación finalizada correctamente');
-    
-  } catch (error) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
-    logger.error(`Error en la aplicación: ${errorMessage}`);
-    process.exit(1);
-  }
+(async()=> {
+    await main();
+    console.log('Fin programa')
+})();
+
+async function main(){
+
+    console.log('Inicio programa')
+
+    const { b: base, l: limit, s: showTable, n: fileName, d: fileDestination } = yarg;
+
+
+    ServerApp.run({ base, limit, showTable, fileName, fileDestination });
 }
 
-main();
+

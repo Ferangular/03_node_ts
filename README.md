@@ -1,15 +1,16 @@
-# Backend Node.js con TypeScript
+# NOC (Node Operations Center) - Sistema de Monitoreo
 
-Proyecto de backend construido con Node.js y TypeScript, configurado con un entorno de desarrollo robusto incluyendo pruebas automatizadas con Jest.
+Proyecto de backend construido con Node.js y TypeScript para monitoreo de servicios y endpoints mediante tareas programadas (cron jobs).
 
 ## 🚀 Características
 
 - **TypeScript** para tipado estático y mejor experiencia de desarrollo
+- **Monitoreo Automático** de endpoints externos y servicios locales
+- **Cron Jobs** para verificaciones periódicas configurables
+- **Logging** detallado de estados y errores
 - **Jest** para pruebas unitarias y de integración
 - **Nodemon** para recarga automática en desarrollo
-- **CommonJS** como sistema de módulos (compatible con el ecosistema Node.js)
-- **Coverage** de código integrado
-- **Scripts** optimizados para desarrollo y producción
+- **JSON Server** para simular APIs locales
 
 ## 📋 Requisitos
 
@@ -27,21 +28,27 @@ cd 03_node_ts
 npm install
 ```
 
-## 🏗️ Estructura del Proyecto
+## 🏗️ Arquitectura del Proyecto
 
 ```
 03_node_ts/
-├── src/                    # Código fuente TypeScript
-│   ├── js-foundation/      # Ejercicios fundamentales de JS/TS
-│   ├── plugins/            # Plugins y utilidades
-│   └── app.js             # Punto de entrada
-├── test/                   # Archivos de prueba
-│   ├── js-foundation/
-│   └── plugins/
-├── dist/                   # Código compilado JavaScript
-├── jest.config.ts         # Configuración de Jest
-├── tsconfig.json          # Configuración de TypeScript
-└── package.json           # Dependencias y scripts
+├── src/
+│   ├── domain/                 # Lógica de negocio
+│   │   └── use-cases/
+│   │       └── checks/         # Casos de uso de verificación
+│   │           └── check.service.ts
+│   ├── presentation/           # Capa de presentación
+│   │   ├── cron/              # Servicios de cron
+│   │   │   └── cron.service.ts
+│   │   └── server.ts          # Configuración principal
+│   └── app.ts                 # Punto de entrada
+├── assets/
+│   └── db.json               # Datos para JSON Server
+├── test/                     # Archivos de prueba
+├── dist/                     # Código compilado JavaScript
+├── jest.config.ts           # Configuración de Jest
+├── tsconfig.json            # Configuración de TypeScript
+└── package.json             # Dependencias y scripts
 ```
 
 ## ⚙️ Configuración de TypeScript
@@ -83,6 +90,44 @@ El archivo `tsconfig.json` está configurado con las siguientes opciones clave:
 - **`types: ["node", "jest"]`**: Incluye tipos para Node.js y Jest globalmente
 - **`ignoreDeprecations: "6.0"`**: Silencia advertencias de configuraciones obsoletas
 
+## 🔧 Funcionalidades del Sistema NOC
+
+### Monitoreo de Endpoints
+
+El sistema verifica automáticamente el estado de diferentes endpoints:
+
+1. **Google** - Cada 10 segundos
+2. **Múltiples APIs externas** - Cada 15 segundos:
+   - GitHub API (usuario octocat)
+   - JSONPlaceholder (posts)
+   - HTTPBin (status check)
+3. **Servicio local** - Cada 30 segundos:
+   - Endpoint local en `http://localhost:3000/users`
+
+### Servicios Principales
+
+#### CheckService
+```typescript
+// Servicio para verificar disponibilidad de endpoints
+class CheckService {
+    constructor(
+        private readonly successCallback: SuccessCallback,
+        private readonly errorCallback: ErrorCallback,
+        private readonly timeoutMs: number = 3000
+    ) {}
+    
+    async execute(url: string): Promise<boolean>
+}
+```
+
+#### CronService
+```typescript
+// Servicio para crear y gestionar tareas programadas
+class CronService {
+    static createJob(cronTime: string, onTick: () => void): CronJob
+}
+```
+
 ## 🧪 Configuración de Jest
 
 El archivo `jest.config.ts` está configurado para trabajar perfectamente con TypeScript:
@@ -118,26 +163,57 @@ const config: Config = {
 
 ```json
 {
-  "test": "jest",                    // Ejecuta todos los tests
-  "test:watch": "jest --watch",      // Ejecuta tests en modo watch
-  "test:coverage": "jest --coverage", // Ejecuta tests con reporte de cobertura
-  "dev": "nodemon",                  // Inicia servidor en desarrollo
-  "build": "npm run test && rimraf ./dist && tsc", // Compila para producción
-  "start": "node dist/app.js"        // Inicia servidor en producción
+  "build": "rimraf ./dist && tsc",
+  "start": "npm run build && node dist/app.js",
+  "dev:tsc": "tsc --watch",
+  "dev:nodemon": "nodemon dist/app.js",
+  "dev": "tsnd --respawn --clear src/app.ts",
+  "json-server": "json-server --watch assets/db.json --port 3000",
+  "test": "jest",
+  "test:watch": "jest --watch",
+  "test:coverage": "jest --coverage"
 }
 ```
 
-## 🔧 Desarrollo
+## 🚀 Ejecución del Sistema
 
-### Iniciar Servidor de Desarrollo
+### Iniciar Sistema NOC Completo
 
 ```bash
+# Terminal 1: Iniciar servidor JSON local
+npm run json-server
+
+# Terminal 2: Iniciar sistema de monitoreo
 npm run dev
 ```
 
-Esto iniciará el servidor con recarga automática cada vez que guardes cambios.
+### Compilar para Producción
 
-### Ejecutar Tests
+```bash
+npm run build
+```
+
+### Iniciar Servidor de Producción
+
+```bash
+npm start
+```
+
+## 📊 Monitoreo en Acción
+
+El sistema mostrará en consola:
+
+```
+Iniciando aplicación...
+Server started...
+🔍 Verificando endpoints...
+✅ https://api.github.com/users/octocat responde correctamente
+✅ https://jsonplaceholder.typicode.com/posts/1 responde correctamente
+✅ https://httpbin.org/status/200 responde correctamente
+🟢 Servicio local funcionando
+```
+
+## 🧪 Ejecutar Tests
 
 ```bash
 # Ejecutar todos los tests
@@ -150,40 +226,30 @@ npm run test:watch
 npm run test:coverage
 ```
 
-### Compilar para Producción
-
-```bash
-npm run build
-```
-
-Esto compilará el código TypeScript a JavaScript en la carpeta `dist/`.
-
-### Iniciar Servidor de Producción
-
-```bash
-npm start
-```
-
 ## 📊 Reporte de Cobertura
 
 Los tests generan un reporte de cobertura en la carpeta `coverage/`. Abre `coverage/lcov-report/index.html` en tu navegador para ver el reporte detallado.
-
-## 🧪 Ejemplos de Tests
-
-El proyecto incluye ejemplos de tests para:
-
-- **Plugins**: Logger, cliente HTTP, cálculo de edad, generación de UUID
-- **Fundamentos JavaScript/TypeScript**: Templates, destructuring, callbacks, factory pattern, promises
 
 ## 🔍 Depuración
 
 Los source maps están habilitados, lo que permite depurar el código TypeScript directamente en tu IDE o en las herramientas de desarrollo del navegador.
 
-## 📚 Referencias
+## 📚 Dependencias Principales
 
-- [Documentación oficial de Node.js con TypeScript](https://nodejs.org/en/learn/getting-started/nodejs-with-typescript)
-- [Documentación oficial de Jest](https://jestjs.io/docs/getting-started)
-- [Documentación de TypeScript](https://www.typescriptlang.org/docs/)
+### Producción
+- **axios** - Cliente HTTP para solicitudes
+- **cron** - Gestión de tareas programadas
+- **winston** - Logging estructurado
+- **json-server** - API REST falsa para desarrollo
+- **uuid** - Generación de identificadores únicos
+- **yargs** - Parseo de argumentos de línea de comandos
+
+### Desarrollo
+- **typescript** - Compilador TypeScript
+- **ts-node-dev** - Ejecución TypeScript con recarga automática
+- **jest** - Framework de pruebas
+- **ts-jest** - Integración TypeScript + Jest
+- **nodemon** - Recarga automática en desarrollo
 
 ## 🤝 Contribuir
 

@@ -1,4 +1,4 @@
-﻿import {CronService} from "./cron/cron.service";
+import {CronService} from "./cron/cron.service";
 import {CheckService} from "../domain/use-cases/checks/check.service";
 
 
@@ -35,7 +35,7 @@ export class Server {
                 console.log('🔍 Verificando endpoints...');
 
                 for (const endpoint of endpoints) {
-                    new CheckService(
+                    await new CheckService(
                         () => console.log(`✅ ${endpoint} responde correctamente`),
                         (error) => console.log(`❌ ${endpoint} - Error: ${error}`)
                     ).execute(endpoint);
@@ -66,7 +66,7 @@ export class Server {
             console.log('🔍 Verificando endpoints...');
 
             for (const endpoint of endpoints) {
-                new CheckService(
+                await new CheckService(
                     ({ url, status, time }) =>
                         console.log(`✅ ${url} | ${status} | ${time}ms`),
 
